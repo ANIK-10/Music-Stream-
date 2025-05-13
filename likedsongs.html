@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        main {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #f5f5f5;
+            text-align: center;
+        }
+        .playlist-form {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .playlist-form input, .playlist-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #ffffff;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .playlist-form input::placeholder, .playlist-form textarea::placeholder {
+            color: #999;
+        }
+        .playlist-form button {
+            padding: 10px 15px;
+            background-color: #444;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .playlist-form button:hover {
+            background-color: #555;
+        }
+        .song-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .song-list li {
+            background-color: #222;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .song-list li span {
+            font-size: 16px;
+        }
+        .song-list button {
+            padding: 5px 10px;
+            background-color: #444;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .song-list button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Create Playlist</h1>
+    </header>
+    <main>
+        <form class="playlist-form" id="playlistForm">
+            <label for="playlistName">Playlist Name:</label>
+            <input type="text" id="playlistName" name="playlistName" placeholder="Enter playlist name" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" placeholder="Enter playlist description" required></textarea>
+
+            <label for="songName">Add Songs:</label>
+            <input type="text" id="songName" name="songName" placeholder="Enter song name">
+
+            <button type="button" id="addSong">Add Song</button>
+            <button type="submit">Save Playlist</button>
+        </form>
+
+        <ul class="song-list" id="songList">
+            <!-- Songs will be dynamically added here -->
+        </ul>
+    </main>
+
+    <script>
+        const songList = document.getElementById('songList');
+        const addSongButton = document.getElementById('addSong');
+        const songNameInput = document.getElementById('songName');
+
+        addSongButton.addEventListener('click', () => {
+            const songName = songNameInput.value.trim();
+
+            if (songName) {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span>${songName}</span>
+                    <button onclick="removeSong(this)">Remove</button>
+                `;
+
+                songList.appendChild(listItem);
+                songNameInput.value = '';
+            } else {
+                alert('Please enter a song name.');
+            }
+        });
+
+        function removeSong(button) {
+            const listItem = button.parentElement;
+            songList.removeChild(listItem);
+        }
+
+        const playlistForm = document.getElementById('playlistForm');
+
+        playlistForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const playlistName = document.getElementById('playlistName').value.trim();
+            const description = document.getElementById('description').value.trim();
+
+            if (!playlistName || !description) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            const songs = Array.from(songList.querySelectorAll('li span')).map((song) => song.textContent);
+
+            if (songs.length === 0) {
+                alert('Please add at least one song to the playlist.');
+                return;
+            }
+
+            alert(`Playlist "${playlistName}" created with ${songs.length} song(s)!`);
+
+            // Reset the form and song list
+            playlistForm.reset();
+            songList.innerHTML = '';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio - Music Streaming Info</title>
+    <link rel="icon" href="C:\Users\KIIT\Desktop\html\Project\New folder\logo music streaming info.jpg" type="image/jpg">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+.contain{
+display" flex;
+}
+
+        /* Left Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            background-color: #1f1f1f;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: #ff9900;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+.sidebar h3 {
+            color: #ff9900;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 220px; /* Adjust margin to accommodate the sidebar */
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+
+
+        /* Header and Footer */
+        header, footer {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #282828;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Radio Stations Section */
+        .radio-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .radio-card {
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .radio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .radio-card img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .radio-card h2 {
+            margin: 15px 0;
+            font-size: 1.5em;
+        }
+
+        .radio-card p {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .button-link {
+            display: inline-block;
+            background-color: #444;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-link:hover {
+            background-color: #ff9900;
+            color: #121212;
+        }
+a{
+text-decoration: none;
+font-size: 20px;
+margin-right: 40px;
+color: white;
+}
+.auth-links {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.separator {
+    margin:0px 15px;
+    color: #ff9900; /* Change color as needed */
+}
+/* Search Bar Styles */
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: #121212;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #e68a00;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .radio-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contain">
+    <div class="sidebar">
+
+        <div class="auth-links">
+    <a href="login.html">Log in </a>
+    <div class="separator">|</div>
+    <a href="signup.html">Sign up</a>
+</div>
+
+
+<h2>BROWSE</h2>
+        
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="old_songs.html">Old Songs</a>
+        
+        
+        
+        <a href="podcasts.html">Podcasts</a>
+        <a href="radio.html">Radio</a>
+
+<h3>LIBRARY</h3>
+ <a href="album.html">Albums</a>
+
+<a href="new releases.html">New Releases</a>
+<a href="collaborations.html">Collaborations</a>
+
+ 
+
+    </div>
+    <main>
+
+    <header>
+        <h1>Radio - Music Streaming Info</h1>
+        <p>Tune in to live radio stations worldwide and enjoy nonstop music, talk shows, and more.</p>
+    </header>
+<!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for songs, artists, or albums..." />
+            <button>Search</button>
+        </div>
+
+    <nav>
+             <a href="main_page.html">Welcome</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+ <a href="old_songs.html">Old Songs</a>
+
+       
+<a href="podcasts.html">Podcasts</a>
+<a href="radio.html">Radio</a>
+        
+
+    </nav>
+<marquee scrollamount="7">
+             <a href="artists.html"> Artist Spotlight</a>
+
+        
+            <a href="album.html">Album Reviews</a>
+            <a href="new releases.html">New Releases</a>
+            <a href="TopCharts.html">Top Charts</a>
+            <a href="podcasts.html">Favourite Podcasts</a>
+            <a href="recommendations.html">Music Trends</a>
+            <a href="collaborations.html">Collaborations</a>
+        </marquee>
+    
+        <div class="radio-container">
+            <!-- Radio Station Card 1 -->
+            <div class="radio-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\global hits radio.jpg" alt="Radio 1">
+                <h2>Global Hits Radio</h2>
+                <p>Listen to the latest hits from around the globe, all in one place.</p>
+                <a href="#" class="button-link">Listen Now</a>
+            </div>
+
+            <!-- Radio Station Card 2 -->
+            <div class="radio-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\classic rock fm.png" alt="Radio 2">
+                <h2>Classic Rock FM</h2>
+                <p>Enjoy timeless classics and rock anthems from the 70s, 80s, and 90s.</p>
+                <a href="#" class="button-link">Listen Now</a>
+            </div>
+
+            <!-- Radio Station Card 3 -->
+            <div class="radio-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\jazz vibes radio.jpg" alt="Radio 3">
+                <h2>Jazz Vibes Radio</h2>
+                <p>Relax and unwind with soothing jazz tracks from top artists.</p>
+                <a href="#" class="button-link">Tune In</a>
+            </div>
+
+            <!-- Radio Station Card 4 -->
+            <div class="radio-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\edm party station.jpg" alt="Radio 4">
+                <h2>EDM Party Station</h2>
+                <p>Get the party started with the latest EDM and electronic dance tracks.</p>
+                <a href="#" class="button-link">Play Now</a>
+            </div>
+<!-- Radio Station Card 5 -->
+            <div class="radio-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\personalised gift radio.png" alt="Radio 4">
+                <h2> Personalized Radio</h2>
+                <p>AI-generated stations based on user preferences, listening history, or favorite artists.</p>
+                <a href="#" class="button-link">Play Now</a>
+            </div>
+
+
+            <!-- Radio Station Card 6 -->
+            <div class="radio-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\indie radio.png" alt="Radio 5">
+                <h2>Indie Sounds Radio</h2>
+                <p>Discover the best of indie music with a mix of emerging and established artists.</p>
+                <a href="#" class="button-link">Start Listening</a>
+            </div>
+        </div>
+    </main>
+
+   <footer>
+        &copy; 2025 Music Streaming Info. All Rights Reserved.
+        <p>Follow us on:
+            <a href="#" style="color: lightblue; text-decoration: none;">Facebook</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Twitter</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Instagram</a>
+        </p>
+<p>
+<a href="privacy policy.html">Privacy Policy</a> |
+<a href="terms_and_conditions.html">Terms & Conditions</a> |
+<a href="contact.html">Contact Us</a> |
+<a href="faqs.html">FAQs</a>
+<p>
+    </footer>
+</body>
+</html>

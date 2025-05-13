@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Streaming Info</title>
+    <link rel="icon" href="C:\Users\KIIT\Desktop\html\Project\New folder\logo music streaming info.jpg" type="image/jpg"> 
+    <style>
+        /* Global Styles - Dark Theme */
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+   
+        }
+.contain{
+display" flex;
+}
+
+        /* Left Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            background-color: #1f1f1f;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: #ff9900;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+.sidebar h3 {
+            color: #ff9900;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 220px; /* Adjust margin to accommodate the sidebar */
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* Header and Footer */
+        header, footer {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #282828;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+
+        /* Collapsible Sections */
+        .collapsible { 
+            cursor: pointer; 
+            background-color: #2b2b2b; 
+            padding: 10px; 
+            text-align: left; 
+            border: none; 
+            outline: none; 
+            width: 100%; 
+            font-size: 18px; 
+            margin-bottom: 5px; 
+            color: #e0e0e0; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+        }
+        .collapsible:hover { 
+            background-color: #444; 
+        }
+        .content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease-out; 
+            padding-left: 15px; 
+            background-color: #292929; 
+            color: #b0b0b0; 
+            border-radius: 5px; 
+        }
+        .content p, .content ul { 
+            margin: 10px 0; 
+        }
+
+        /* Footer */
+        footer { 
+            margin-top: 30px; 
+            font-size: 14px; 
+        }
+        footer a { 
+            color: #9e9e9e; 
+            margin: 0 8px; 
+            text-decoration: none; 
+            font-size: 16px; 
+            transition: color 0.3s ease; 
+        }
+        footer a:hover { 
+            color: white; 
+        }
+a{
+text-decoration: none;
+font-size: 20px;
+margin-right: 40px;
+color: white;
+}
+.auth-links {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.separator {
+    margin:0px 15px;
+    color: #ff9900; /* Change color as needed */
+}
+
+
+/* Search Bar Styles */
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: #121212;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #e68a00;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav { 
+                flex-wrap: wrap; 
+            }
+            nav a { 
+                margin: 5px 0; 
+            }
+            main { 
+                padding: 20px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+    <div class="sidebar">
+
+        <div class="auth-links">
+    <a href="login.html">Log in </a>
+    <div class="separator">|</div>
+    <a href="signup.html">Sign up</a>
+</div>
+
+
+<h2>BROWSE</h2>
+        
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="old_songs.html">Old Songs</a>
+        
+        
+        
+        <a href="podcasts.html">Podcasts</a>
+        <a href="radio.html">Radio</a>
+
+<h3>LIBRARY</h3>
+ <a href="album.html">Albums</a>
+
+<a href="new releases.html">New Releases</a>
+<a href="collaborations.html">Collaborations</a>
+
+ 
+
+    </div>
+    <main>
+        <header>
+            <h1>About Us</h1>
+<p>Your one-stop destination for curated playlists, artist insights, music recommendations, and your desired genres.</p>
+        </header>
+<!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for songs, artists, or albums..." />
+            <button>Search</button>
+        </div>
+        <nav>
+            <a href="main_page.html">Welcome</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+<a href="TopCharts.html">Top Charts</a>
+            <a href="playlists.html">Playlists</a>
+            <a href="artists.html">Artist</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="genres.html">Genres</a>
+           
+        </nav>
+        <marquee scrollamount="7">
+            <a href="artists.html"> Artist Spotlight</a>
+
+        
+            <a href="album.html">Album Reviews</a>
+            <a href="new releases.html">New Releases</a>
+            <a href="TopCharts.html">Top Charts</a>
+            <a href="podcasts.html">Favourite Podcasts</a>
+            <a href="recommendations.html">Music Trends</a>
+            <a href="collaborations.html">Collaborations</a>
+        </marquee>
+        <button class="collapsible">Our Story</button>
+        <div class="content">
+            <p>Welcome to Music Streaming Info! Whether you're a die-hard music fan or just looking for your next favorite song, we've got you covered. Explore curated playlists that are tailored to your mood, genre preferences, or activity. Dive deep into artist profiles, learn about their journey, and discover their latest releases and upcoming events. Get personalized music recommendations that perfectly match your vibe, using advanced algorithms that understand your taste. Stay updated with trending tracks, albums, and fresh releases from the music world.
+
+Discover new tunes, connect with your favorite artists, and let the rhythm take over! Whether you're in the mood for relaxing beats, high-energy anthems, or discovering niche genres, we have something for everyone. Unlock exclusive content, access interviews, and get behind-the-scenes glimpses into the lives of your favorite musicians. Join our community of passionate music lovers, share your playlist with friends, and let the music flow effortlessly into your everyday life. Your next musical adventure starts here!</p>
+        </div>
+        <button class="collapsible">Our Mission</button>
+        <div class="content">
+            <p>Our mission is to bring music lovers closer to the tunes they adore while helping them uncover fresh artists and exciting genres. We believe music is a universal language that connects people across all backgrounds, transcending borders and uniting communities worldwide. Whether you're a fan of timeless classics, modern hits, or experimental sounds, we strive to create an immersive experience that nurtures your passion for music.
+
+Join us on a journey to celebrate the vibrant diversity of musical expression and discover sounds that truly speak to you! From emerging indie sensations to global chart-toppers, we aim to bridge the gap between listeners and the artists who inspire them. Our platform is designed to make music exploration effortless, with tools to help you curate your perfect playlists, follow your favorite bands, and stay updated on tours, albums, and live-streamed performances. 
+
+Together, let’s champion creativity and support the art of music-making. Let the melodies you love become part of your story, and open your heart to the boundless inspiration that music brings. After all, music is more than sound—it’s an experience, a connection, and a way of life.</p>
+        </div>
+        <button class="collapsible">Our Values</button>
+        <div class="content">
+            <ul>
+               <li>Deliver an inclusive and welcoming space for all music enthusiasts. We strive to create a platform where music lovers of all backgrounds, tastes, and preferences can come together to celebrate the universal power of music. Everyone belongs here, and we are dedicated to ensuring accessibility for all users.</li>
+                <li>Provide personalized recommendations to enhance your listening experience. Using advanced AI algorithms, we deliver curated playlists and song suggestions that align with your unique preferences. From rediscovering old favorites to finding new tunes that fit your vibe, our goal is to make every listening session memorable and enjoyable</li>
+                <li>Support emerging artists and diverse genres from around the globe. We are passionate about giving up-and-coming artists a platform to showcase their talent while shining a spotlight on the rich tapestry of musical styles worldwide. By championing diversity, we aim to bring you sounds that reflect the beauty of different cultures and communities.</li>
+                <li>Maintain transparency and honesty in all our content and partnerships. We value the trust of our community, which is why we are committed to ethical practices. From transparent ad partnerships to clear communication about features, we prioritize authenticity in everything we do.</li>
+<li>Offer exclusive content and behind-the-scenes experiences. Dive deeper into the world of music with exclusive interviews, live performances, and behind-the-scenes glimpses into your favorite artists' creative processes. Experience music like never before..</li>
+<li>Encourage community engagement and connection. Our platform is more than a listening tool—it’s a place to connect with fellow music enthusiasts. Share playlists, discuss favorite artists, and celebrate the joy of music together..</li>
+<li>Foster a platform for discovery and innovation. Whether it's introducing experimental genres, promoting niche music scenes, or unveiling cutting-edge audio features, we are committed to pushing boundaries and keeping the music experience fresh and exciting..</li>
+<li>Promote mental well-being through music. We recognize the therapeutic power of music in improving mood, reducing stress, and enhancing well-being. Our specially curated playlists and features are designed to uplift and inspire you.</li>
+<li>Empower listeners with insights and knowledge. From learning about music history and theory to exploring artist stories and cultural influences, we offer content that enriches your understanding and appreciation of music..</li>
+<liCommit to sustainability and positive impact. Through environmentally conscious practices and supporting charitable initiatives in the music industry, we aim to contribute positively to the world while amplifying the voices of artists and fans alike.</li>
+            </ul>
+        </div>
+ <button class="collapsible">Why Choose Us?</button>
+        <div class="content">
+            <p>With our ever-growing library of playlists, artist profiles, and handpicked recommendations, you'll never run out of music to explore. Whether you're chasing the hottest hits, diving into nostalgic classics, or uncovering hidden gems from underground scenes, we’ve got something special just for you. Let us guide you to the soundtrack of your life!
+
+Discover playlists tailored to your every mood, activity, or moment—be it for unwinding after a long day, powering through a workout, or setting the perfect vibe for a celebration. Dive deep into artist profiles to learn more about their stories, inspirations, and musical journeys, and be the first to know about their upcoming releases and live performances.
+
+Our handpicked recommendations are designed to keep your music experience fresh and exciting, introducing you to genres and artists you might have never encountered. From global sensations to local talents, our library showcases the diversity and richness of music from every corner of the world.
+
+With intuitive search tools, mood-based filters, and expertly curated collections, finding your next favorite song has never been easier. Plus, our dynamic updates ensure that you'll always have something new to discover, making every listening session an adventure.
+
+Let us be your trusted companion on this musical journey—whether you're creating the perfect backdrop for your daily routine or diving into a world of sound that speaks to your soul. Because here, it's not just about listening; it’s about connecting, feeling, and living the music.</p>
+        </div
+    </main>
+     <footer>
+        &copy; 2025 Music Streaming Info. All Rights Reserved.
+        <p>Follow us on:
+            <a href="#" style="color: lightblue; text-decoration: none;">Facebook</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Twitter</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Instagram</a>
+        </p>
+<p>
+<a href="privacy policy.html">Privacy Policy</a> |
+<a href="terms_and_conditions.html">Terms & Conditions</a> |
+<a href="contact.html">Contact Us</a>
+<p>
+    </footer>
+    <script>
+        const collapsibles = document.querySelectorAll('.collapsible');
+        collapsibles.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const content = button.nextElementSibling;
+                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+            });
+        });
+    </script>
+</body>
+</html>

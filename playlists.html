@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Streaming Info</title>
+    <link rel="icon" href="C:\Users\KIIT\Desktop\html\Project\New folder\logo music streaming info.jpg" type="image/jpg"> 
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+   
+        }
+.contain{
+display" flex;
+}
+
+        /* Left Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            background-color: #1f1f1f;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: #ff9900;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+.sidebar h3 {
+            color: #ff9900;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 220px; /* Adjust margin to accommodate the sidebar */
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* Header and Footer */
+        header, footer {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #282828;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Slider Styling */
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .playlist-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between playlist cards */
+        }
+
+        .playlist-card {
+            background-color: #1b1b1b; /* Dark card background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .playlist-card:hover {
+            transform: translateY(-10px); /* Lift effect */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .playlist-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 8px;
+            filter: brightness(80%); /* Subtle dimming for dark theme */
+        }
+
+        .playlist-card h3 {
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        .playlist-card p {
+            color: #cccccc;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #3a3a3a; /* Neutral dark button */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .view-button:hover {
+            background-color: #555555; /* Lighten on hover */
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #1c1c1c; /* Dark footer */
+            color: #aaaaaa; /* Softer gray text */
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark overlay */
+            z-index: 1000;
+            padding-top: 100px;
+        }
+
+        .modal:target {
+            display: block;
+        }
+
+        .modal-content {
+            background-color: #232323; /* Dark modal content */
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .modal-header {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .modal-body ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .modal-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .close {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 28px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #aaaaaa;
+        }
+
+        /* Buttons */
+        .button-link {
+            display: inline-block;
+            background-color: #444;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-link:hover {
+            background-color: #ff9900;
+            color: #121212;
+        }
+a{
+text-decoration: none;
+font-size: 20px;
+margin-right: 40px;
+color: white;
+}
+.auth-links {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.separator {
+    margin:0px 15px;
+    color: #ff9900; /* Change color as needed */
+}
+/* Search Bar Styles */
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: #121212;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #e68a00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                flex: 0 0 90%;
+            }
+
+            .sidebar {
+                width: 150px;
+            }
+
+            main {
+                margin-left: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+ <div class="contain">
+    <div class="sidebar">
+
+        <div class="auth-links">
+    <a href="login.html">Log in </a>
+    <div class="separator">|</div>
+    <a href="signup.html">Sign up</a>
+</div>
+
+
+<h2>BROWSE</h2>
+        
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="old_songs.html">Old Songs</a>
+        
+        
+        
+        <a href="podcasts.html">Podcasts</a>
+        <a href="radio.html">Radio</a>
+
+<h3>LIBRARY</h3>
+ <a href="album.html">Albums</a>
+
+<a href="new releases.html">New Releases</a>
+<a href="collaborations.html">Collaborations</a>
+
+ 
+
+    </div>
+    <main>
+        <header>
+            <h1>Playlists Overview</h1>
+              <p>Explore music playlists for every occasion and mood!</p>
+        </header>
+<!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for songs, artists, or albums..." />
+            <button>Search</button>
+        </div>
+        <nav>
+            <a href="main_page.html">Welcome</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="TopCharts.html">Top Charts</a>
+            
+            <a href="playlists.html">Playlists</a>
+            <a href="artists.html">Artist </a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="genres.html">Genres</a>
+            
+           
+           
+
+        </nav>
+        <marquee scrollamount="7">
+             <a href="artists.html"> Artist Spotlight</a>
+
+        
+            <a href="album.html">Album Reviews</a>
+            <a href="new releases.html">New Releases</a>
+            <a href="TopCharts.html">Top Charts</a>
+            <a href="podcasts.html">Favourite Podcasts</a>
+            <a href="recommendations.html">Music Trends</a>
+            <a href="collaborations.html">Collaborations</a>
+        </marquee>
+
+    
+
+
+
+ 
+        <h2>Discover Our Curated Playlists</h2>
+        
+
+        <div class="playlist-container">
+            <!-- Playlist 1 -->
+            <div class="playlist-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\chill vibes.jpg" alt="Chill Vibes" class="playlist-image">
+                <h3>Chill Vibes</h3>
+                <p>Relax and unwind with these soothing tracks.</p>
+                <a href="#modal1" class="view-button">View Songs</a>
+            </div>
+<!-- Playlist 2 -->
+            <div class="playlist-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\classical essentials 640x640.jpg" alt="Chill Vibes" class="playlist-image">
+                <h3>Classical Essentials</h3>
+                <p>Masterpieces from Mozart, Beethoven, and more</p>
+                <a href="#modal1" class="view-button">View Songs</a>
+  </div><!-- Playlist 3 -->
+            <div class="playlist-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\lofi beats.jpg" alt="Chill Vibes" class="playlist-image">
+                <h3>Lo-fi Beats</h3>
+                <p>Chill and instrumental beats, perfect for studying or relaxing.</p>
+                <a href="#modal1" class="view-button">View Songs</a>
+            </div>
+
+            <!-- Playlist 4 -->
+            <div class="playlist-card">
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\uobeat music.jpg" alt="Upbeat Hits" class="playlist-image">
+                <h3>Upbeat Hits</h3>
+                <p>Get energized with the latest upbeat tracks.</p>
+                <a href="#modal2" class="view-button">View Songs</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close">&times;</a>
+            <div class="modal-header">Chill Vibes</div>
+            <div class="modal-body">
+                <ul>
+                    <li>Heat Waves</li>
+                    <li>Raatan Lambiyan</li>
+                    <li>Agar Tum Saath Ho</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close">&times;</a>
+            <div class="modal-header">Classical Essentials</div>
+            <div class="modal-body">
+                <ul>
+                    <li>Humein Tumse Pyar Kitna</li>
+                    <li>Raina Beeti Jaye</li>
+                    <li>Kya Yehi Pyar Hai</li>
+<li>Aanewala Pal</li>
+<li>Phoolon Ka Taron Ka</li>
+<li>Zindagi Ka Safar</li>
+<li>Badi Sooni Sooni Hai</li>
+<li>Musafir Hoon Yaaron</li>
+<li>Mere Naina Saawan Bhadon</li>
+<li>Chingari Koi Bhadke</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close">&times;</a>
+            <div class="modal-header">Lo-fi Beats</div>
+            <div class="modal-body">
+                <ul>
+                    <li>Humein Tumse Pyar Kitna</li>
+                    <li>Raina Beeti Jaye</li>
+                    <li>Kya Yehi Pyar Hai</li>
+<li>Aanewala Pal</li>
+<li>Phoolon Ka Taron Ka</li>
+<li>Zindagi Ka Safar</li>
+<li>Badi Sooni Sooni Hai</li>
+<li>Musafir Hoon Yaaron</li>
+<li>Mere Naina Saawan Bhadon</li>
+<li>Chingari Koi Bhadke</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal 4 -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close">&times;</a>
+            <div class="modal-header">Upbeat Hits</div>
+            <div class="modal-body">
+                <ul>
+                    <li>Humein Tumse Pyar Kitna</li>
+                    <li>Raina Beeti Jaye</li>
+                    <li>Kya Yehi Pyar Hai</li>
+<li>Aanewala Pal</li>
+<li>Phoolon Ka Taron Ka</li>
+<li>Zindagi Ka Safar</li>
+<li>Badi Sooni Sooni Hai</li>
+<li>Musafir Hoon Yaaron</li>
+<li>Mere Naina Saawan Bhadon</li>
+<li>Chingari Koi Bhadke</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </main>
+
+     <footer>
+        &copy; 2025 Music Streaming Info. All Rights Reserved.
+        <p>Follow us on:
+            <a href="#" style="color: lightblue; text-decoration: none;">Facebook</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Twitter</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Instagram</a>
+        </p>
+<p>
+<a href="privacy policy.html">Privacy Policy</a> |
+<a href="terms_and_conditions.html">Terms & Conditions</a> |
+<a href="contact.html">Contact Us</a> |
+<a href="faqs.html">FAQs</a>
+<p>
+    </footer>
+
+</body>
+</html>

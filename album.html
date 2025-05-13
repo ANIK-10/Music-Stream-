@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Collection</title>
+    <link rel="icon" href="C:\Users\KIIT\Desktop\html\Project\New folder\logo music streaming info.jpg" type="image/jpg">
+    <style>
+       /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+   
+        }
+
+        header, footer {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #282828;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #f5f5f5;
+        }
+        .album-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .album {
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .album:hover {
+            transform: scale(1.05);
+        }
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .album h3 {
+            margin: 10px 0;
+            color: #ffffff;
+        }
+        .album p {
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+        footer a {
+            color: #76c7ff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #ffffff;
+        }
+a{
+text-decoration: none;
+font-size: 20px;
+margin-right: 40px;
+color: white;
+}
+/* Search Bar Styles */
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: #121212;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #e68a00;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Album Collection</h1>
+<p>A sonic journey weaving melodies, rhythms, and emotions into one experience.</p>
+    </header>
+<!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for songs, artists, or albums..." />
+            <button>Search</button>
+        </div>
+    <nav>
+        <a href="main_page.html">Welcome</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+         <a href="album.html">Albums</a>
+        <a href="new releases.html">New Releases</a>
+ <a href="collaborations.html">Collaborations</a>
+    </nav>
+<marquee scrollamount="7">
+             <a href="artists.html"> Artist Spotlight</a>
+
+        
+            <a href="album.html">Album Reviews</a>
+            <a href="new releases.html">New Releases</a>
+            <a href="TopCharts.html">Top Charts</a>
+            <a href="podcasts.html">Favourite Podcasts</a>
+            <a href="recommendations.html">Music Trends</a>
+            <a href="collaborations.html">Collaborations</a>
+        </marquee>
+
+    <main>
+        <h2>Discover Your Favorite Albums</h2>
+<p>A curated collection of songs that capture a theme, mood, or story</p>
+        <div class="album-container">
+            <div class="album">
+                <img src="C:\Users\KIIT\Desktop\AiLAB\album1.jpeg" alt="Album 1">
+                <h3>Soulful Bliss</h3>
+                <p>Artist: Mohit Chauhan</p>
+                <p>Genr: Lofi</p>
+            </div>
+            <div class="album">
+                <img src="C:\Users\KIIT\Desktop\AiLAB\album6.jpeg" alt="Album 2">
+                <h3>Classical Aesthetics</h3>
+                <p>Artist: R.D Barman</p>
+                <p>Genre: Classical</p>
+            </div>
+ <div class="album">
+                <img src="C:\Users\KIIT\Desktop\AiLAB\album5.jpeg" alt="Album 2">
+                <h3>Chilled Hip Hop</h3>
+                <p>Artist: Badshah</p>
+                <p>Genre: Hip Hop</p>
+            </div>
+            <div class="album">
+                <img src="C:\Users\KIIT\Desktop\AiLAB\album3.jpeg" alt="Album 3">
+                <h3>Lofi Aesthetics</h3>
+                <p>Artist:Atif Aslam</p>
+                <p>Genre: Lofi</p>
+            </div>
+            <div class="album">
+                <img src="C:\Users\KIIT\Desktop\AiLAB\album4.jpeg" alt="Album 4">
+                <h3>Chill Aesthetics</h3>
+                <p>Artist: Mohali Thakur</p>
+                <p>Genre: Jazz</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Music Streaming Info. All Rights Reserved.
+        <p>Follow us on:
+            <a href="#" style="color: lightblue; text-decoration: none;">Facebook</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Twitter</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Instagram</a>
+        </p>
+<p>
+<a href="privacy policy.html">Privacy Policy</a> |
+<a href="terms_and_conditions.html">Terms & Conditions</a> |
+<a href="contact.html">Contact Us</a> |
+<a href="faqs.html">FAQs</a>
+<p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Streaming Info</title>
+    <link rel="icon" href="C:\Users\KIIT\Desktop\html\Project\New folder\logo music streaming info.jpg" type="image/jpg"> 
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+   
+        }
+.contain{
+display" flex;
+}
+
+        /* Left Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            background-color: #1f1f1f;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: #ff9900;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+.sidebar h3 {
+            color: #ff9900;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+
+        .sidebar a {
+            display: block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 0.95em;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 220px; /* Adjust margin to accommodate the sidebar */
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        /* Header and Footer */
+        header, footer {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #282828;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #444;
+            color: #ff9900;
+        }
+
+        /* Slider Styling */
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            scroll-snap-align: center;
+            flex: 0 0 80%;
+            max-width: 300px;
+            text-align: center;
+            padding: 20px;
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Buttons */
+        .button-link {
+            display: inline-block;
+            background-color: #444;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-link:hover {
+            background-color: #ff9900;
+            color: #121212;
+        }
+a{
+text-decoration: none;
+font-size: 20px;
+margin-right: 40px;
+color: white;
+}
+.auth-links {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.separator {
+    margin:0px 15px;
+    color: #ff9900; /* Change color as needed */
+}
+/* Search Bar Styles */
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff9900;
+            color: #121212;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #e68a00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card {
+                flex: 0 0 90%;
+            }
+
+            .sidebar {
+                width: 150px;
+            }
+
+            main {
+                margin-left: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="contain">
+    <div class="sidebar">
+
+        <div class="auth-links">
+    <a href="login.html">Log in </a>
+    <div class="separator">|</div>
+    <a href="signup.html">Sign up</a>
+</div>
+
+
+<h2>BROWSE</h2>
+        
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="old_songs.html">Old Songs</a>
+        
+        
+        
+        <a href="podcasts.html">Podcasts</a>
+        <a href="radio.html">Radio</a>
+
+<h3>LIBRARY</h3>
+ <a href="album.html">Albums</a>
+
+<a href="new releases.html">New Releases</a>
+<a href="collaborations.html">Collaborations</a>
+
+ 
+
+    </div>
+    <main>
+        <header>
+            <h1>Recommendations</h1>
+             <p>Your one-stop destination for curated playlists, artist insights, music recommendations, and your desired genres.</p>
+        </header>
+<!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for songs, artists, or albums..." />
+            <button>Search</button>
+        </div>
+        <nav>
+            <a href="main_page.html">Welcome</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="TopCharts.html">Top Charts</a>
+            
+            <a href="playlists.html">Playlists</a>
+            <a href="artists.html">Artist </a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="genres.html">Genres</a>
+            
+           
+            
+        </nav>
+        <marquee scrollamount="7">
+           <a href="artists.html"> Artist Spotlight</a>
+
+        
+            <a href="album.html">Album Reviews</a>
+            <a href="new releases.html">New Releases</a>
+            <a href="TopCharts.html">Top Charts</a>
+            <a href="podcasts.html">Favourite Podcasts</a>
+            <a href="recommendations.html">Music Trends</a>
+            <a href="collaborations.html">Collaborations</a>
+        </marquee>
+
+    
+
+
+
+        <div class="slider">
+            <div class="card">
+                <h2>Soothing Melodies</h2>
+                <img src="C:\Users\KIIT\Desktop\html\Project\New folder\1900x1900-000000-80-0-0.jpg" alt="Soothing Melodies">
+                <p>Relax with tranquil tunes that calm your soul.</p>
+                <a href="playlists.html" class="button-link">Listen Now</a>
+            </div>
+            <div class="card">
+                <h2>Energetic Beats</h2>
+                <img src="C:\Users\KIIT\Desktop\html\Project\51c-siT+NrL._UXNaN_FMjpg_QL85_.jpg" alt="Energetic Beats">
+                <p>Boost your energy with vibrant and dynamic tracks.</p>
+                <a href="playlists.html" class="button-link">Explore</a>
+            </div>
+            <div class="card">
+                <h2>Classical Hits</h2>
+                <img src="C:\Users\KIIT\Desktop\html\Project\hindustani_classical_gems_vol-1.webp" alt="Classical Hits">
+                <p>Dive into timeless pieces from the greatest composers.</p>
+                <a href="playlists.html" class="button-link">Discover</a>
+            </div>
+            <div class="card">
+                <h2>Pop Favorites</h2>
+                <img src="C:\Users\KIIT\Desktop\html\Project\ab67616d0000b2730325b8604725202da6cbbf93.jpg" alt="Pop Favorites">
+                <p>Enjoy chart-topping hits that everyone loves.</p>
+                <a href="playlists.html" class="button-link">Play Now</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Music Streaming Info. All Rights Reserved.
+        <p>Follow us on:
+            <a href="#" style="color: lightblue; text-decoration: none;">Facebook</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Twitter</a> |
+            <a href="#" style="color: lightblue; text-decoration: none;">Instagram</a>
+        </p>
+<p>
+<a href="privacy policy.html">Privacy Policy</a> |
+<a href="terms_and_conditions.html">Terms & Conditions</a> |
+<a href="contact.html">Contact Us</a> |
+<a href="faqs.html">FAQs</a>
+<p>
+    </footer>
+
+</body>
+</html>
